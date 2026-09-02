@@ -1,0 +1,20 @@
+{
+  "name": "hrconnect-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered recruiter discovery and networking assistant (Chrome MV3 extension).",
+  "type": "module",
+  "scripts": {
+    "icons": "node tools/make-icons.mjs",
+    "build": "node tools/build.mjs",
+    "watch": "node tools/build.mjs --watch",
+    "smoke": "node tools/smoke.mjs",
+    "zip": "npm run build && node tools/zip.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
