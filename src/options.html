@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HRConnect AI — Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="mark">HR</span>
+        <div>
+          <h1>HRConnect AI</h1>
+          <p class="subtitle">
+            Everything here stays in this browser profile. Nothing is sent anywhere except
+            directly to the Anthropic API when you ask for an analysis or a draft.
+          </p>
+        </div>
+      </header>
+
+      <div id="banner" class="banner" hidden></div>
+
+      <section class="card">
+        <h2>Anthropic API key</h2>
+        <p class="muted">
+          Create one at
+          <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer"
+            >console.anthropic.com</a
+          >. Usage is billed to your own account.
+        </p>
+        <div class="row">
+          <input id="apiKey" type="password" placeholder="sk-ant-..." autocomplete="off" />
+          <button id="toggleKey" class="btn btn-ghost">Show</button>
+          <button id="testKey" class="btn btn-ghost">Test</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Your profile</h2>
+        <p class="muted">
+          This is what Claude writes from. The more concrete it is, the less generic every
+          draft will be.
+        </p>
+
+        <div class="grid">
+          <label>Full name<input id="fullName" type="text" placeholder="Areesha Khan" /></label>
+          <label>
+            Current role
+            <input id="currentRole" type="text" placeholder="Frontend Developer at Acme" />
+          </label>
+          <label>
+            Years of experience
+            <input id="yearsExperience" type="text" placeholder="3" />
+          </label>
+          <label>Location<input id="location" type="text" placeholder="Karachi, Pakistan" /></label>
+        </div>
+
+        <label>
+          Roles you are targeting
+          <input
+            id="targetRoles"
+            type="text"
+            placeholder="Frontend Engineer, React Developer, Full-stack (remote)"
+          />
+        </label>
+
+        <label>
+          Key skills
+          <input id="skills" type="text" placeholder="React, TypeScript, Node, Postgres" />
+        </label>
+
+        <label>
+          Highlights worth mentioning
+          <textarea
+            id="highlights"
+            rows="4"
+            placeholder="Shipped a checkout rewrite that cut load time 40%. Maintain an open-source charting library with 900 stars."
+          ></textarea>
+        </label>
+
+        <label>
+          Links
+          <input id="links" type="text" placeholder="github.com/you · yoursite.dev" />
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Defaults</h2>
+        <div class="grid">
+          <label>Message type<select id="defaultChannel"></select></label>
+          <label>Tone<select id="defaultTone"></select></label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="save" class="btn btn-primary">Save settings</button>
+        <span id="savedNote" class="muted" hidden>Saved.</span>
+      </div>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

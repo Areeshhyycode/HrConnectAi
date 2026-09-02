@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HRConnect AI</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark">HR</span>
+        <div>
+          <h1>HRConnect AI</h1>
+          <p class="subtitle">Recruiter discovery &amp; outreach</p>
+        </div>
+      </div>
+      <button id="openOptions" class="icon-btn" title="Settings" aria-label="Settings">⚙</button>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab is-active" data-tab="discover" role="tab">Discover</button>
+      <button class="tab" data-tab="saved" role="tab">
+        Saved <span id="savedCount" class="pill">0</span>
+      </button>
+    </nav>
+
+    <div id="banner" class="banner" hidden></div>
+
+    <!-- ── Discover ─────────────────────────────────────────────── -->
+    <section id="panel-discover" class="panel is-active">
+      <button id="scanBtn" class="btn btn-primary">Scan this page</button>
+      <p id="scanHint" class="hint">
+        Open a LinkedIn profile or people-search page, then scan.
+      </p>
+
+      <div id="pickList" class="card" hidden>
+        <div class="card-head">
+          <h2>People on this page</h2>
+          <button id="backToScan" class="link-btn">Back</button>
+        </div>
+        <ul id="pickItems" class="pick-items"></ul>
+      </div>
+
+      <div id="personCard" class="card" hidden>
+        <div class="card-head">
+          <h2 id="personName">—</h2>
+          <span id="personScore" class="score" hidden></span>
+        </div>
+        <p id="personHeadline" class="muted"></p>
+        <p id="personMeta" class="muted small"></p>
+
+        <details id="editDetails" class="editor">
+          <summary>Edit details</summary>
+          <label>Name<input id="editName" type="text" /></label>
+          <label>Headline<input id="editHeadline" type="text" /></label>
+          <label>Company<input id="editCompany" type="text" /></label>
+          <label>Profile URL<input id="editUrl" type="text" /></label>
+          <button id="applyEdits" class="btn btn-ghost">Apply</button>
+        </details>
+
+        <div id="analysisBox" class="analysis" hidden>
+          <p id="analysisVerdict" class="verdict"></p>
+          <ul id="analysisPoints" class="points"></ul>
+        </div>
+
+        <div class="row">
+          <button id="analyzeBtn" class="btn btn-ghost">Analyze with AI</button>
+          <button id="saveBtn" class="btn btn-ghost">Save</button>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <label class="field">
+            Message type
+            <select id="channelSelect"></select>
+          </label>
+          <label class="field">
+            Tone
+            <select id="toneSelect"></select>
+          </label>
+        </div>
+
+        <label class="field">
+          Anything to add? <span class="muted small">(optional)</span>
+          <textarea
+            id="extraContext"
+            rows="2"
+            placeholder="e.g. Applied to the backend role last week, ref #4821"
+          ></textarea>
+        </label>
+
+        <button id="draftBtn" class="btn btn-primary">Draft outreach</button>
+
+        <div id="draftBox" class="draft" hidden>
+          <div id="subjectWrap" class="field" hidden>
+            <label>
+              Subject
+              <input id="draftSubject" type="text" />
+            </label>
+          </div>
+          <label class="field">
+            Message
+            <textarea id="draftBody" rows="8"></textarea>
+          </label>
+          <div class="row space-between">
+            <span id="charCount" class="muted small"></span>
+            <div class="row">
+              <button id="regenBtn" class="btn btn-ghost small">Regenerate</button>
+              <button id="copyBtn" class="btn btn-primary small">Copy</button>
+            </div>
+          </div>
+          <ul id="draftTips" class="points"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Saved ────────────────────────────────────────────────── -->
+    <section id="panel-saved" class="panel">
+      <div class="row">
+        <input id="searchSaved" type="search" placeholder="Search saved contacts" />
+        <button id="exportBtn" class="btn btn-ghost small">Export</button>
+      </div>
+      <ul id="savedList" class="saved-list"></ul>
+      <p id="savedEmpty" class="hint">
+        Nothing saved yet. Scan a profile and hit Save.
+      </p>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
